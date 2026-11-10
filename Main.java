@@ -8,6 +8,8 @@ import java.util.concurrent.Future;
 public class Main {
     public static void main(String[] args)
             throws InterruptedException, ExecutionException {
+				long startTime = System.nanoTime();
+
         ExecutorService executor = Executors.newFixedThreadPool(8);
         ArrayList<Future<Long>> futures = new ArrayList<>();
 
@@ -28,14 +30,18 @@ public class Main {
 
         executor.shutdown();
 
-        long grandTotal = 0;
+		long grandTotal = 0;
 
-        for (Future<Long> future : futures) {
-            grandTotal += future.get();
-        }
+		for (Future<Long> future : futures) {
+			grandTotal += future.get();
+		}
 
-        System.out.println("Grand total: " + grandTotal);
+		long endTime = System.nanoTime();
+		double milliseconds = (endTime - startTime) / 1_000_000.0;
 
-        System.out.println("Project complete");
-    }
+		System.out.println("Grand total: " + grandTotal);
+		System.out.println("Time: " + milliseconds + " ms");
+
+		System.out.println("Project complete");
+	}
 }
