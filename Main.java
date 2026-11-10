@@ -42,6 +42,6 @@ public class Main {
 		System.out.println("Grand total: " + grandTotal);
 		System.out.println("Time: " + milliseconds + " ms");
 
-		System.out.println("Project complete");
+		System.out.println("Timer branch complete");
 	}
 }
